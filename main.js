@@ -11,6 +11,8 @@ var main_state = {
     // Load the bird sprite
     this.game.load.image('bird', 'assets/bird.png');
 
+    this.game.load.image('pipe', 'assets/pipe.png');  
+
     },
 
     create: function() { 
@@ -22,8 +24,14 @@ var main_state = {
 
       // Call the 'jump' function when the spacekey is hit
       var space_key = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-      space_key.onDown.add(this.jump, this);   
-      },
+      space_key.onDown.add(this.jump, this);
+
+      this.pipes = game.add.group();  
+      this.pipes.createMultiple(20, 'pipe');
+    },
+
+
+
     
     update: function() {
 		// Function called 60 times per second
@@ -43,6 +51,20 @@ var main_state = {
     restart_game: function() {  
     // Start the 'main' state, which restarts the game
     this.game.state.start('main');
+    },
+
+    add_one_pipe: function(x, y) {  
+    // Get the first dead pipe of our group
+    var pipe = this.pipes.getFirstDead();
+
+    // Set the new position of the pipe
+    pipe.reset(x, y);
+
+    // Add velocity to the pipe to make it move left
+    pipe.body.velocity.x = -200; 
+
+    // Kill the pipe when it's no longer visible 
+    pipe.outOfBoundsKill = true;
     },
 };
 
