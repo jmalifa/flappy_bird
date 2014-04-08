@@ -28,6 +28,8 @@ var main_state = {
 
       this.pipes = game.add.group();  
       this.pipes.createMultiple(20, 'pipe');
+
+      this.timer = this.game.time.events.loop(1500, this.add_row_of_pipes, this); 
     },
 
 
@@ -50,6 +52,7 @@ var main_state = {
     // Restart the game
     restart_game: function() {  
     // Start the 'main' state, which restarts the game
+    this.game.time.events.remove(this.timer);  
     this.game.state.start('main');
     },
 
@@ -65,6 +68,14 @@ var main_state = {
 
     // Kill the pipe when it's no longer visible 
     pipe.outOfBoundsKill = true;
+    },
+
+    add_row_of_pipes: function() {  
+    var hole = Math.floor(Math.random()*5)+1;
+
+    for (var i = 0; i < 8; i++)
+        if (i != hole && i != hole +1) 
+            this.add_one_pipe(400, i*60+10);   
     },
 };
 
