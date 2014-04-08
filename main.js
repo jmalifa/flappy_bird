@@ -71,7 +71,7 @@ var main_state = {
     pipe.reset(x, y);
 
     // Add velocity to the pipe to make it move left
-    pipe.body.velocity.x = -50; 
+    pipe.body.velocity.x = -500; 
 
     // Kill the pipe when it's no longer visible 
     pipe.outOfBoundsKill = true;
