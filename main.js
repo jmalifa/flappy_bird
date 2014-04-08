@@ -11,7 +11,9 @@ var main_state = {
     // Load the bird sprite
     this.game.load.image('bird', 'assets/bird.png');
 
-    this.game.load.image('pipe', 'assets/pipe.png');  
+    this.game.load.image('pipe', 'assets/pipe.png');
+
+    this.game.load.audio('jump', 'assets/jump.wav'); 
 
     },
 
@@ -39,7 +41,10 @@ var main_state = {
 
       this.score = 0;  
         var style = { font: "30px Arial", fill: "#ffffff" };
-        this.label_score = this.game.add.text(20, 20, "0", style); 
+        this.label_score = this.game.add.text(20, 20, "0", style);
+
+        this.jump_sound = this.game.add.audio('jump');  
+ 
     },
 
 
@@ -52,15 +57,39 @@ var main_state = {
     if (this.bird.inWorld == false)
         this.restart_game();
 
-    this.game.physics.overlap(this.bird, this.pipes, this.restart_game, null, this); 
+    this.game.physics.overlap(this.bird, this.pipes, this.hit_pipe, null, this); 
 
     if (this.bird.angle < 20)  
         this.bird.angle += 1;
 
     },
 
+    hit_pipe: function() {  
+    // If the bird has already hit a pipe, we have nothing to do
+    if (this.bird.alive == false)
+        return;
+
+    // Set the alive property of the bird to false
+    this.bird.alive = false;
+
+    // Prevent new pipes from appearing
+    this.game.time.events.remove(this.timer);
+
+    // Go through all the pipes, and stop their movement
+    this.pipes.forEachAlive(function(p){
+        p.body.velocity.x = 0;
+    }, this);
+    },
+
     // Make the bird jump 
-    jump: function() {  
+    jump: function() {
+
+
+    if (this.bird.alive == false)  
+    return;
+    
+    this.jump_sound.play();
+    
     // Add a vertical velocity to the bird
     this.bird.body.velocity.y = -350;
 
@@ -72,6 +101,8 @@ var main_state = {
 
     // And start the animation
     animation.start();
+
+    
 
     },
 
