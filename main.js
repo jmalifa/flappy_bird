@@ -30,6 +30,10 @@ var main_state = {
       this.pipes.createMultiple(20, 'pipe');
 
       this.timer = this.game.time.events.loop(1500, this.add_row_of_pipes, this); 
+
+      this.score = 0;  
+        var style = { font: "30px Arial", fill: "#ffffff" };
+        this.label_score = this.game.add.text(20, 20, "0", style); 
     },
 
 
@@ -42,7 +46,10 @@ var main_state = {
     if (this.bird.inWorld == false)
         this.restart_game();
 
+    this.game.physics.overlap(this.bird, this.pipes, this.restart_game, null, this); 
+
     },
+
     // Make the bird jump 
     jump: function() {  
     // Add a vertical velocity to the bird
@@ -72,10 +79,14 @@ var main_state = {
 
     add_row_of_pipes: function() {  
     var hole = Math.floor(Math.random()*5)+1;
-
+    
     for (var i = 0; i < 8; i++)
         if (i != hole && i != hole +1) 
-            this.add_one_pipe(400, i*60+10);   
+            this.add_one_pipe(400, i*60+10);
+    
+    this.score += 1;  
+    this.label_score.content = this.score;  
+   
     },
 };
 
