@@ -6,13 +6,6 @@ var menu_state = {
 
         this.game.input.onDown.add(this.start, this);
 
-
-        function gofull(){
-            Phaser.StageScaleMode.EXACT_FIT = 0;
-            game.stage.scale.startFullScreen();
-            alert('full screen');
-        }
-
         // Defining variables
         var style = { font: "20px Arial", fill: "#ffffff" };
         var x = game.world.width/2, y = game.world.height/2;
