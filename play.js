@@ -10,7 +10,8 @@ var play_state = {
 
         this.pipes = game.add.group();
         this.pipes.createMultiple(20, 'pipe');  
-        this.timer = this.game.time.events.loop(1500, this.add_row_of_pipes, this);           
+        this.timer = this.game.time.events.loop(1500, this.add_row_of_pipes, this);
+               
 
         this.bird = this.game.add.sprite(100, 245, 'bird');
         this.bird.body.gravity.y = 1000; 
@@ -22,6 +23,7 @@ var play_state = {
         this.label_score = this.game.add.text(20, 20, "0", style); 
 
         this.jump_sound = this.game.add.audio('jump');
+
     },
 
     update: function() {
@@ -78,6 +80,6 @@ var play_state = {
 
         // No 'this.score', but just 'score'
         score += 1; 
-        this.label_score.content = score;  
-    }
+        this.label_score.content = score; 
+   }
 };
