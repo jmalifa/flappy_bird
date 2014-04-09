@@ -28,18 +28,6 @@ var menu_state = {
             score_label.anchor.setTo(0.5, 0.5); 
         }
 
-        this.game.input.onDown.add(gofull, this);
-
-        
-        function gofull(){
-            Phaser.StageScaleMode.EXACT_FIT = 0;
-            game.stage.scale.startFullScreen();
-            alert('full screen');
-        }
-
-
-
-
     },
 
     // Start the actual game
