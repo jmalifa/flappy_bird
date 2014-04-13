@@ -27,23 +27,23 @@ var play_state = {
 
         this.game.add.image(0, 0, 'sky');
 
-        var emitter = this.game.add.emitter(game.world.centerX, 0, 400);
+        var this.emitter = this.game.add.emitter(game.world.centerX, 0, 400);
 
-        emitter.width = this.game.world.width;
-        // emitter.angle = 30; // uncomment to set an angle for the rain.
+        this.emitter.width = this.game.world.width;
+        // this.emitter.angle = 30; // uncomment to set an angle for the rain.
 
-        emitter.makeParticles('rain');
+        this.emitter.makeParticles('rain');
 
-        emitter.minParticleScale = 0.1;
-        emitter.maxParticleScale = 0.5;
+        this.emitter.minParticleScale = 0.1;
+        this.emitter.maxParticleScale = 0.5;
 
-        emitter.setYSpeed(300, 500);
-        emitter.setXSpeed(-5, 5);
+        this.emitter.setYSpeed(300, 500);
+        this.emitter.setXSpeed(-5, 5);
 
-        emitter.minRotation = 0;
-        emitter.maxRotation = 0;
+        this.emitter.minRotation = 0;
+        this.emitter.maxRotation = 0;
 
-        emitter.start(false, 1600, 5, 0);
+        this.emitter.start(false, 1600, 5, 0);
 
 
 
