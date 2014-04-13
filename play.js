@@ -25,7 +25,7 @@ var play_state = {
         this.jump_sound = this.game.add.audio('jump');
         this.hit_sound = this.game.add.audio('hit_pipe')
 
-        game.add.image(0, 0, 'sky');
+        this.game.add.image(0, 0, 'sky');
 
         var emitter = game.add.emitter(game.world.centerX, 0, 400);
 
