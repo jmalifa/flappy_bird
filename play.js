@@ -25,28 +25,6 @@ var play_state = {
         this.jump_sound = this.game.add.audio('jump');
         this.hit_sound = this.game.add.audio('hit_pipe')
 
-        this.game.add.image(0, 0, 'sky');
-
-        var this.emitter = this.game.add.emitter(game.world.centerX, 0, 400);
-
-        this.emitter.width = this.game.world.width;
-        // this.emitter.angle = 30; // uncomment to set an angle for the rain.
-
-        this.emitter.makeParticles('rain');
-
-        this.emitter.minParticleScale = 0.1;
-        this.emitter.maxParticleScale = 0.5;
-
-        this.emitter.setYSpeed(300, 500);
-        this.emitter.setXSpeed(-5, 5);
-
-        this.emitter.minRotation = 0;
-        this.emitter.maxRotation = 0;
-
-        this.emitter.start(false, 1600, 5, 0);
-
-
-
     },
 
     update: function() {
