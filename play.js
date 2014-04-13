@@ -27,9 +27,9 @@ var play_state = {
 
         this.game.add.image(0, 0, 'sky');
 
-        var emitter = game.add.emitter(game.world.centerX, 0, 400);
+        var emitter = this.game.add.emitter(game.world.centerX, 0, 400);
 
-        emitter.width = game.world.width;
+        emitter.width = this.game.world.width;
         // emitter.angle = 30; // uncomment to set an angle for the rain.
 
         emitter.makeParticles('rain');
